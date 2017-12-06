@@ -3,7 +3,7 @@
       <div class="item-block__overview">
           <div>
               <div>Spec Number</div>
-              <div>Spec Name</div>
+              <div>{{ item }}</div>
           </div>
           <hr>
           <div>
@@ -22,6 +22,9 @@
 
 <script>
 export default {
+  props: {
+    item: String
+  },
   data () {
     return {
       qty: 3,

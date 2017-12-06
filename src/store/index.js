@@ -24,7 +24,7 @@ const state = {
     2: {
       id: 2,
       name: 'Lighting',
-      items: ['Sconce', 'table light', 'floorlamp'],
+      items: ['Sconce', 'table light', 'floorlamp', 'chandelier'],
       deliveryDate: 'March 2, 2018',
       responseDate: 'Dec 31, 2017',
       sentBy: 'Lindsey Bluth',
@@ -35,7 +35,7 @@ const state = {
     3: {
       id: 3,
       name: 'Seating',
-      items: ['chair', 'lounge chair', 'Sofa'],
+      items: ['chair', 'lounge chair', 'Sofa', 'stool', 'pillows'],
       deliveryDate: 'April 8, 2018',
       responseDate: 'Dec 31, 2017',
       sentBy: 'Lindsey Bluth',

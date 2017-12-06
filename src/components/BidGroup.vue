@@ -6,7 +6,7 @@
             <div><strong>{{ bidgroup.id }}</strong></div>
           </div>
           <div>{{ bidgroup.items }}</div>
-          <div>Status: {{ bidgroup.reviewed }}</div>
+          <div>Reviewed: {{ bidgroup.reviewed }}</div>
           <div>Select</div>
       </div>
   </div>

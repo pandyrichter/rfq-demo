@@ -6,14 +6,19 @@
         v-for="bidgroup in bidGroups"
         :key="bidgroup.id"
         :bidgroup="bidgroup"
-        :active="bidgroup.id === currentBidGroup"
+        :active="bidgroup.id === currentBidGroupID"
       >
       </bid-group>
     </ul>
     <hr>
-    <div>Active bid group: {{ currentBidGroup }}</div>
+    <div>Active bid group: {{ currentBidGroupID }}</div>
     <bid-analysis>
-      <item-block></item-block>
+      <item-block
+      v-for="(item, index) in currentBidItems"
+      :key="`item-${index}`"
+      :item="item"
+      >
+      </item-block>
     </bid-analysis>
   </div>
 </template>
@@ -30,7 +35,8 @@ export default {
   computed: {
     ...mapGetters([
       'bidGroups',
-      'currentBidGroup'
+      'currentBidGroupID',
+      'currentBidItems'
     ])
   },
   components: {
