@@ -1,4 +1,4 @@
-# rpm2-rfqmgr-demo
+# rfqmgr-demo
 
 > A Vue.js project
 
