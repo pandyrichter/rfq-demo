@@ -1,11 +1,11 @@
 <template>
   <div class="bidanalysis">
-      <h2>Bid Group</h2>
+      <h2>Bid Analysis</h2>
       <div class="bidanalysis__toolbar">
           <div>Bid Group Type: General</div>
       </div>
       <slot>
-          I'm an empty bid group
+          Select a bid group to complete analysis.
       </slot>
   </div>
 </template>
@@ -17,6 +17,13 @@ export default {
 
 <style lang="postcss" scoped>
 .bidanalysis {
-    text-align: left;
+  text-align: left;
+
+  &__toolbar {
+    border-bottom: 1px solid lightblue;
+    margin-bottom: 15px;
+    padding: 10px 0px;
+  }
+
 }
 </style>

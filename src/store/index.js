@@ -19,7 +19,8 @@ const state = {
       sentBy: 'Lindsey Bluth',
       vendorPortal: true,
       bidsReleased: false,
-      reviewed: false
+      reviewed: false,
+      vendors: ['BirchBasin', 'Timball', 'HardKnocks']
     },
     2: {
       id: 2,
@@ -30,7 +31,8 @@ const state = {
       sentBy: 'Lindsey Bluth',
       vendorPortal: true,
       bidsReleased: false,
-      reviewed: false
+      reviewed: false,
+      vendors: ['BrightLight', 'Nielite', 'KingShine', 'RELED']
     },
     3: {
       id: 3,
@@ -41,7 +43,8 @@ const state = {
       sentBy: 'Lindsey Bluth',
       vendorPortal: false,
       bidsReleased: false,
-      reviewed: false
+      reviewed: false,
+      vendors: ['SquishyChair', 'OunceBounce']
     }
   }
 }

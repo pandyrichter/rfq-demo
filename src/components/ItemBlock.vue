@@ -2,8 +2,8 @@
   <div class="item-block">
       <div class="item-block__overview">
           <div>
+              <div><strong>{{ item }}</strong></div>
               <div>Spec Number</div>
-              <div>{{ item }}</div>
           </div>
           <hr>
           <div>
@@ -39,6 +39,7 @@ export default {
   display: flex;
   border: 1px solid gray;
   border-radius: 5px;
+  margin-bottom: 15px;
   padding: 20px;
 }
 

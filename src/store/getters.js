@@ -14,3 +14,10 @@ export const currentBidItems = state => {
     ? bidgroup.items
     : []
 }
+
+export const currentBidVendors = state => {
+  const bidgroup = currentBidGroup(state)
+  return bidgroup.vendors
+  ? bidgroup.vendors
+  : []
+}

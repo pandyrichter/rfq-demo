@@ -13,6 +13,7 @@
     <hr>
     <div>Active bid group: {{ currentBidGroupID }}</div>
     <bid-analysis>
+      <vendor-block v-for="(vendor, index) in currentBidVendors" :key="`vendor-${index}`" :vendor="vendor"></vendor-block>
       <item-block
       v-for="(item, index) in currentBidItems"
       :key="`item-${index}`"
@@ -26,9 +27,10 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import ItemBlock from './components/ItemBlock'
 import BidGroup from './components/BidGroup'
 import BidAnalysis from './components/BidAnalysis'
+import ItemBlock from './components/ItemBlock'
+import VendorBlock from './components/VendorBlock'
 
 export default {
   name: 'app',
@@ -36,13 +38,15 @@ export default {
     ...mapGetters([
       'bidGroups',
       'currentBidGroupID',
-      'currentBidItems'
+      'currentBidItems',
+      'currentBidVendors'
     ])
   },
   components: {
-    ItemBlock,
     BidGroup,
-    BidAnalysis
+    BidAnalysis,
+    ItemBlock,
+    VendorBlock
   }
 }
 </script>
