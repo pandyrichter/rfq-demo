@@ -21,3 +21,9 @@ export const currentBidVendors = state => {
   ? bidgroup.vendors
   : []
 }
+
+export const currentBidQuotes = state => {
+  return state.quotes
+  ? state.quotes
+  : 'No quotes'
+}

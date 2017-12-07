@@ -28,6 +28,8 @@
       <hr>
       <div>Totals</div>
     </bid-analysis>
+    <div>Quotes: {{ currentBidQuotes }}</div>
+    <quote-block :vendor="'Timball'" :item="'Nighstand'" :quoteid="2" :qty="3"></quote-block>
   </div>
 </template>
 
@@ -38,6 +40,7 @@ import BidGroup from './components/BidGroup'
 import BidAnalysis from './components/BidAnalysis'
 import ItemBlock from './components/ItemBlock'
 import VendorBlock from './components/VendorBlock'
+import QuoteBlock from './components/QuoteBlock'
 
 export default {
   name: 'app',
@@ -47,14 +50,16 @@ export default {
       'currentBidGroupID',
       'currentBidGroup',
       'currentBidItems',
-      'currentBidVendors'
+      'currentBidVendors',
+      'currentBidQuotes'
     ])
   },
   components: {
     BidGroup,
     BidAnalysis,
     ItemBlock,
-    VendorBlock
+    VendorBlock,
+    QuoteBlock
   }
 }
 </script>
