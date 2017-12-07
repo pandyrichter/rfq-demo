@@ -37,6 +37,7 @@ export default {
   justify-content: space-between;
   margin-bottom: 10px;
   padding: 20px;
+  cursor: pointer;
 
   &:hover {
       background-color: lightgray;

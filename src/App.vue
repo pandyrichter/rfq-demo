@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <!-- <router-view/> -->
+    <h2>Bid Groups</h2>
     <ul class="bidgroup-list">
       <bid-group
         v-for="bidgroup in bidGroups"
@@ -11,15 +12,21 @@
       </bid-group>
     </ul>
     <hr>
-    <div>Active bid group: {{ currentBidGroupID }}</div>
+    <div v-if="currentBidGroupID">Active bid group: <strong>{{ currentBidGroup.name }}</strong></div>
+    <hr>
     <bid-analysis>
-      <vendor-block v-for="(vendor, index) in currentBidVendors" :key="`vendor-${index}`" :vendor="vendor"></vendor-block>
+      <div v-if="!currentBidGroupID" class="analysis-placeholder">Select a bid group to complete analysis.</div>
+      <vendor-block v-for="(vendor, index) in currentBidVendors"
+      :key="`vendor-${index}`"
+      :vendor="vendor">
+      </vendor-block>
       <item-block
       v-for="(item, index) in currentBidItems"
       :key="`item-${index}`"
-      :item="item"
-      >
+      :item="item">
       </item-block>
+      <hr>
+      <div>Totals</div>
     </bid-analysis>
   </div>
 </template>
@@ -38,6 +45,7 @@ export default {
     ...mapGetters([
       'bidGroups',
       'currentBidGroupID',
+      'currentBidGroup',
       'currentBidItems',
       'currentBidVendors'
     ])
@@ -51,12 +59,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="postcss" scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin: 60px;
+}
+
+.analysis-placeholder {
+  background-color: yellow;
+  border-radius: 5px;
+  padding: 15px;
 }
 </style>

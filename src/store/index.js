@@ -46,7 +46,8 @@ const state = {
       reviewed: false,
       vendors: ['SquishyChair', 'OunceBounce']
     }
-  }
+  },
+  quotes: {}
 }
 
 export default new Vuex.Store({
