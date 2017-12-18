@@ -1,36 +1,38 @@
 <template>
   <div class="quote-block">
+    price
     <input type="text" v-model="quote.price">
-    <input type="text" v-model="quote.id">
+    id
+    <input type="text" v-model="quote.idFake">
     <div>Quoteid: {{ quote.id }}</div>
     <div>{{ quote.item }}</div>
     <div>{{ quote.vendor }}</div>
     <div>Qty: {{ quote.qty }}</div>
-    <button @click="createQuote(quote.id)">Submit quote</button>
+    <button @click="addQuote(quote)">Submit quote</button>
     <div>Extended price: ${{ quote.price * quote.qty }}</div>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
+import uuidv4 from 'uuid/v4'
 
 export default {
   props: {
     vendor: String,
     item: String,
-    quoteid: Number,
     qty: Number
   },
   data () {
     return {
       quote: {
-        id: '',
+        idFake: '',
+        id: uuidv4(),
         price: '',
         timestamp: Date.now(),
         vendor: this.vendor,
         item: this.item,
         qty: this.qty
-        // id: this.quoteid
       }
     }
   },
@@ -38,8 +40,9 @@ export default {
     submitQuote () {
       console.log('Submitted quote:', this.quote)
     },
-    ...mapMutations([
-      'createQuote'
+    ...mapActions([
+      // mapActions implements 'dispatch' for each action
+      'addQuote'
     ])
   }
 }

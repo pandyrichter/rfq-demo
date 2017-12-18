@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div class="bidgroup" :class="{ bidgroupactive : active }"  @click="setCurrentBidGroup(bidgroup.id)">
+      <div class="bidgroup" :class="{ bidgroupactive : active }"  @click="selectBidGroup(bidgroup.id)">
           <div>
             <div>{{ bidgroup.name }}</div>
             <div><strong>{{ bidgroup.id }}</strong></div>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'BidGroup',
@@ -22,8 +22,8 @@ export default {
     active: Boolean
   },
   methods: {
-    ...mapMutations([
-      'setCurrentBidGroup'
+    ...mapActions([
+      'selectBidGroup'
     ])
   }
 }

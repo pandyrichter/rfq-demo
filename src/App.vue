@@ -29,7 +29,7 @@
       <div>Totals</div>
     </bid-analysis>
     <div>Quotes: {{ currentBidQuotes }}</div>
-    <quote-block :vendor="'Timball'" :item="'Nighstand'" :quoteid="2" :qty="3"></quote-block>
+    <quote-block :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
   </div>
 </template>
 
