@@ -15,6 +15,7 @@
     <div v-if="currentBidGroupID">Active bid group: <strong>{{ currentBidGroup.name }}</strong></div>
     <hr>
     <bid-analysis>
+      <button @click="createQuoteSet">Create Quote Set</button>
       <div v-if="!currentBidGroupID" class="analysis-placeholder">Select a bid group to complete analysis.</div>
       <vendor-block v-for="(vendor, index) in currentBidVendors"
       :key="`vendor-${index}`"
@@ -28,13 +29,13 @@
       <hr>
       <div>Totals</div>
     </bid-analysis>
-    <div>Quotes: {{ currentBidQuotes }}</div>
+    <div>Quotes: {{ submittedBidQuotes }}</div>
     <quote-block :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 import BidGroup from './components/BidGroup'
 import BidAnalysis from './components/BidAnalysis'
@@ -51,7 +52,12 @@ export default {
       'currentBidGroup',
       'currentBidItems',
       'currentBidVendors',
-      'currentBidQuotes'
+      'submittedBidQuotes'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'createQuoteSet'
     ])
   },
   components: {

@@ -11,8 +11,8 @@ export const currentBidGroup = state => {
 export const currentBidItems = state => {
   const bidgroup = currentBidGroup(state)
   return bidgroup.items
-    ? bidgroup.items
-    : []
+  ? bidgroup.items
+  : []
 }
 
 export const currentBidVendors = state => {
@@ -22,7 +22,7 @@ export const currentBidVendors = state => {
   : []
 }
 
-export const currentBidQuotes = state => {
+export const submittedBidQuotes = state => {
   return state.quotes
   ? state.quotes
   : {}

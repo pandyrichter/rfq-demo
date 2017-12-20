@@ -10,6 +10,8 @@
     <div>Qty: {{ quote.qty }}</div>
     <button @click="addQuote(quote)">Submit quote</button>
     <div>Extended price: ${{ quote.price * quote.qty }}</div>
+    <div v-if="quote.locked"><span class="fa fa-lock"></span></div>
+    <div v-else><span class="fa fa-unlock-alt"></span></div>
   </div>
 </template>
 
@@ -32,7 +34,8 @@ export default {
         timestamp: Date.now(),
         vendor: this.vendor,
         item: this.item,
-        qty: this.qty
+        qty: this.qty,
+        locked: false
       }
     }
   },
