@@ -25,5 +25,5 @@ export const currentBidVendors = state => {
 export const currentBidQuotes = state => {
   return state.quotes
   ? state.quotes
-  : 'No quotes'
+  : {}
 }
