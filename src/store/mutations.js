@@ -4,6 +4,7 @@ import uuidv4 from 'uuid/v4'
 
 export default {
   [types.CREATE_QUOTE_SET] (state) {
+    // Create Quote Set to return to if session ends
     // For each combination of vendors and items, generate uuid
     // and quote block within quote set
     // What actually happens in mutation vs somewhere else though?
@@ -22,7 +23,11 @@ export default {
       console.log(bidCombinations)
       for (let i = 0; i <= bidCombinations; i++) {
         let uniqueQuoteId = uuidv4()
-        Vue.set(state.quotes, uniqueQuoteId, {'created': timestamp})
+        let quoteInit = {
+          'id': uniqueQuoteId,
+          'created': timestamp
+        }
+        Vue.set(state.quotes, uniqueQuoteId, quoteInit)
       }
       // Key questions (don't occur in mutation):
       // 1. How to tie each quote to a vendor and an item

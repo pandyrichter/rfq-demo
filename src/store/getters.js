@@ -22,7 +22,7 @@ export const currentBidVendors = state => {
   : []
 }
 
-export const submittedBidQuotes = state => {
+export const currentBidQuotes = state => {
   return state.quotes
   ? state.quotes
   : {}

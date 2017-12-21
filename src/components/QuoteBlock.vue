@@ -17,21 +17,21 @@
 
 <script>
 import { mapActions } from 'vuex'
-import uuidv4 from 'uuid/v4'
 
 export default {
   props: {
     vendor: String,
     item: String,
-    qty: Number
+    qty: Number,
+    id: String
   },
   data () {
     return {
       quote: {
         idFake: '',
-        id: uuidv4(),
         price: '',
         timestamp: Date.now(),
+        id: this.id,
         vendor: this.vendor,
         item: this.item,
         qty: this.qty,

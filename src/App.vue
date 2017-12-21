@@ -29,8 +29,8 @@
       <hr>
       <div>Totals</div>
     </bid-analysis>
-    <div>Quotes: {{ submittedBidQuotes }}</div>
-    <quote-block :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
+    <div>Quotes: {{ currentBidQuotes }}</div>
+    <quote-block v-for="(quote, index) in currentBidQuotes" :key="index" :id="quote.id" :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
   </div>
 </template>
 
@@ -52,7 +52,7 @@ export default {
       'currentBidGroup',
       'currentBidItems',
       'currentBidVendors',
-      'submittedBidQuotes'
+      'currentBidQuotes'
     ])
   },
   methods: {
