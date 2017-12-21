@@ -1,12 +1,9 @@
 import Vue from 'vue'
 import * as types from './mutation-types'
-// import uuidv4 from 'uuid/v4'
+import uuidv4 from 'uuid/v4'
 
 export default {
   [types.CREATE_QUOTE_SET] (state) {
-    // Test... this should actually happen on created, if bidgroup doesnt' already
-    // have a quote set
-    Vue.set(state.quotes, 'new quotes', {1: 'quotes here'})
     // For each combination of vendors and items, generate uuid
     // and quote block within quote set
     // What actually happens in mutation vs somewhere else though?
@@ -20,6 +17,17 @@ export default {
       let items = group.items
       console.log(items)
       // Step 3: Create combination for each set of vendors and items
+      let bidCombinations = items.length * vendors.length
+      let timestamp = Date.now()
+      console.log(bidCombinations)
+      for (let i = 0; i <= bidCombinations; i++) {
+        let uniqueQuoteId = uuidv4()
+        Vue.set(state.quotes, uniqueQuoteId, {'created': timestamp})
+      }
+      // Key questions (don't occur in mutation):
+      // 1. How to tie each quote to a vendor and an item
+      // (do i have to use a big recursive function from Stack Overflow?)
+      // 2. How to display within grid format?
     }
   },
   [types.ADD_QUOTE] (state, payload) {
