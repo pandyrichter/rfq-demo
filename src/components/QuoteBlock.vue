@@ -1,12 +1,10 @@
 <template>
-  <div class="quote-block">
+  <div class="quote-block" :class="{ quoteblockactive : quote.locked }">
     price
-    <input type="text" v-model="quote.price">
-    id
-    <input type="text" v-model="quote.idFake">
+    <input type="text" v-model="quote.price" @keyup.enter="addQuote(quote)">
     <div>Quoteid: {{ quote.id }}</div>
-    <div>{{ quote.item }}</div>
-    <div>{{ quote.vendor }}</div>
+    <div>Item: {{ quote.item }}</div>
+    <div>Vendor: {{ quote.vendor }}</div>
     <div>Qty: {{ quote.qty }}</div>
     <button @click="addQuote(quote)">Submit quote</button>
     <div>Extended price: ${{ quote.price * quote.qty }}</div>
@@ -53,6 +51,13 @@ export default {
 
 <style lang="postcss" scoped>
   .quote-block {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 15px;
+  }
+
+  .quoteblockactive {
+    background-color: lightgray;
     border: 1px solid gray;
     border-radius: 5px;
     padding: 15px;

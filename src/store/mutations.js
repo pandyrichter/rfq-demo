@@ -35,9 +35,9 @@ export default {
       // 2. How to display within grid format?
     }
   },
-  [types.ADD_QUOTE] (state, payload) {
+  [types.SUBMIT_QUOTE] (state, payload) {
     payload.locked = true
-    Vue.set(state.quotes, payload.idFake, {...payload})
+    Vue.set(state.quotes, payload.id, {...payload})
   },
   [types.SELECT_BID_GROUP] (state, id) {
     setCurrentBidGroup(state, id)

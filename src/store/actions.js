@@ -9,5 +9,5 @@ export const createQuoteSet = (context) => {
 }
 
 export const addQuote = ({ commit }, payload) => {
-  commit(types.ADD_QUOTE, payload)
+  commit(types.SUBMIT_QUOTE, payload)
 }

@@ -11,12 +11,6 @@
               <div>{{ qty }} | UOM</div>
           </div>
       </div>
-      <div id="itemPriceCompare">
-          <div class="item-price" v-for="p in prices" :key="p['index']" >Price: {{ p }}
-            <div>Ext. Price: {{ p * qty }}</div>
-          </div>
-          <br>
-      </div>
   </div>
 </template>
 
@@ -47,8 +41,4 @@ export default {
   padding: 20px;
 }
 
-#itemPriceCompare {
-  display: flex;
-  margin: 0px 20px;
-}
 </style>
