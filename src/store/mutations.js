@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import * as types from './mutation-types'
 import uuidv4 from 'uuid/v4'
+import cartesian from '../helpers/cartesian'
 
 export default {
   [types.CREATE_QUOTE_SET] (state) {
@@ -18,14 +19,16 @@ export default {
       let items = group.items
       console.log(items)
       // Step 3: Create combination for each set of vendors and items
-      let bidCombinations = items.length * vendors.length
+      let bidCombinations = cartesian(items, vendors)
       let timestamp = Date.now()
-      console.log(bidCombinations)
-      for (let i = 0; i <= bidCombinations; i++) {
+      console.log(typeof bidCombinations)
+      for (let i = 0; i <= bidCombinations.length; i++) {
         let uniqueQuoteId = uuidv4()
+        let bidPair = bidCombinations[i]
         let quoteInit = {
           'id': uniqueQuoteId,
-          'created': timestamp
+          'created': timestamp,
+          'bidPair': bidPair
         }
         Vue.set(state.quotes, uniqueQuoteId, quoteInit)
       }

@@ -29,7 +29,7 @@
       <hr>
       <div>Totals</div>
     </bid-analysis>
-    <quote-block v-for="(quote, index) in currentBidQuotes" :key="index" :id="quote.id" :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
+    <quote-block v-for="(quote, index) in currentBidQuotes" :key="index" :id="quote.id" :bidPair="quote.bidPair" :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
   </div>
 </template>
 

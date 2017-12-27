@@ -3,9 +3,10 @@
     price
     <input type="text" v-model="quote.price" @keyup.enter="addQuote(quote)">
     <div>Quoteid: {{ quote.id }}</div>
-    <div>Item: {{ quote.item }}</div>
-    <div>Vendor: {{ quote.vendor }}</div>
+    <div>Item: {{ quote.bidPair[0] }}</div>
+    <div>Vendor: {{ quote.bidPair[1] }}</div>
     <div>Qty: {{ quote.qty }}</div>
+    <div>Pair: {{ quote.bidPair }}</div>
     <button @click="addQuote(quote)">Submit quote</button>
     <div>Extended price: ${{ quote.price * quote.qty }}</div>
     <div v-if="quote.locked"><span class="fa fa-lock"></span></div>
@@ -21,7 +22,8 @@ export default {
     vendor: String,
     item: String,
     qty: Number,
-    id: String
+    id: String,
+    bidPair: Array
   },
   data () {
     return {
@@ -33,7 +35,8 @@ export default {
         vendor: this.vendor,
         item: this.item,
         qty: this.qty,
-        locked: false
+        locked: false,
+        bidPair: this.bidPair
       }
     }
   },

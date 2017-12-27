@@ -3,6 +3,7 @@
       <div class="item-block__overview">
           <div>
               <div><strong>{{ item }}</strong></div>
+              <div>Item ID: ##############</div>
               <div>Spec Number</div>
           </div>
           <hr>
