@@ -14,22 +14,31 @@
     <hr>
     <div v-if="currentBidGroupID">Active bid group: <strong>{{ currentBidGroup.name }}</strong></div>
     <hr>
-    <bid-analysis>
-      <button @click="createQuoteSet">Create Quote Set</button>
-      <div v-if="!currentBidGroupID" class="analysis-placeholder">Select a bid group to complete analysis.</div>
-      <vendor-block v-for="(vendor, index) in currentBidVendors"
-      :key="`vendor-${index}`"
-      :vendor="vendor">
-      </vendor-block>
-      <item-block
-      v-for="(item, index) in currentBidItems"
-      :key="`item-${index}`"
-      :item="item">
-      </item-block>
-      <hr>
-      <div>Totals</div>
+    <button @click="createQuoteSet">Create Quote Set</button>
+    <div v-if="!currentBidGroupID" class="analysis-placeholder">Select a bid group to complete analysis.</div>
+    <bid-analysis class="bid-grid">
+      <div class="bid-grid__title">{{ currentBidGroup.name }}</div>
+      <div class="bid-grid__header">
+        <vendor-block v-for="(vendor, index) in currentBidVendors"
+        :key="`vendor-${index}`"
+        :vendor="vendor">
+        </vendor-block>
+      </div>
+      <div class="bid-grid__items">
+        <item-block
+        v-for="(item, index) in currentBidItems"
+        :key="`item-${index}`"
+        :item="item">
+        </item-block>
+      </div>
+      <div class="bid-grid__quotes">
+        <div class="quote-grid">
+          <quote-block class="quote-grid__item" v-for="(quote, index) in currentBidQuotes" :key="index" :id="quote.id" :bidPair="quote.bidPair" :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
+        </div>
+      </div>
+      <div class="bid-grid__placeholder"></div>
+      <div class="bid-grid__totals">Totals</div>
     </bid-analysis>
-    <quote-block v-for="(quote, index) in currentBidQuotes" :key="index" :id="quote.id" :bidPair="quote.bidPair" :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
   </div>
 </template>
 
@@ -82,5 +91,62 @@ export default {
   background-color: yellow;
   border-radius: 5px;
   padding: 15px;
+}
+
+.bid-grid {
+  width: 800px;
+  height: 600px;
+  border: 1px solid gray;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 5fr 1fr;
+  grid-template-areas:
+    "title header"
+    "items quotes"
+    "placeholder totals";
+
+  &__title {
+    grid-area: title;
+    background-color: coral;
+  }
+
+  &__header {
+    grid-area: header;
+    background-color: yellow;
+  }
+
+  &__items {
+    grid-area: items;
+    background-color: aquamarine;
+  }
+
+  &__quotes {
+    grid-area: quotes;
+    background-color: lightblue;
+  }
+
+  &__totals {
+    grid-area: totals;
+    background-color: lightpink;
+  }
+
+  &__placeholder {
+    grid-area: placeholder;
+    background-color: blue;
+  }
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  // Want to set quote grid with 
+  // max columns = number of vendors
+  // max rows = number of items
+
+  &__item {
+
+  }
 }
 </style>

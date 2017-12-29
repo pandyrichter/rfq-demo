@@ -1,10 +1,10 @@
 <template>
   <div class="bidanalysis">
-      <h2>Bid Analysis</h2>
+      <!-- <h2>Bid Analysis</h2>
       <div class="bidanalysis__toolbar">
           <div>Bid Template Type</div>
           <div>Bid By Item: False</div>
-      </div>
+      </div> -->
       <slot>
           Select a bid group to complete analysis.
       </slot>

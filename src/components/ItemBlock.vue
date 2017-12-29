@@ -31,7 +31,7 @@ export default {
 
 <style lang="postcss" scoped>
 .item-block {
-  display: flex;
+  // display: flex;
   border: 1px solid gray;
   border-radius: 5px;
   margin-bottom: 15px;
