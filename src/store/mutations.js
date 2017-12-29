@@ -32,6 +32,8 @@ export default {
         }
         Vue.set(state.quotes, uniqueQuoteId, quoteInit)
       }
+      // TODO: Move out of mutation
+      document.getElementById('quoteGrid').style.gridTemplateColumns = `repeat(${vendors.length}, 225px)`
       // Key questions (don't occur in mutation):
       // 1. How to tie each quote to a vendor and an item
       // (do i have to use a big recursive function from Stack Overflow?)

@@ -17,8 +17,10 @@ export default {
 <style lang="postcss" scoped>
 .vendor-block {
   // display: inline-block;
-  margin-right: 15px;
-  width: 200px;
+  margin-right: 10px;
+  width: 225px;
   text-align: center;
+  border: 1px solid gray;
+  border-radius: 3px;
 }
 </style>

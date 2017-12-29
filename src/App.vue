@@ -32,7 +32,7 @@
         </item-block>
       </div>
       <div class="bid-grid__quotes">
-        <div class="quote-grid">
+        <div id="quoteGrid">
           <quote-block class="quote-grid__item" v-for="(quote, index) in currentBidQuotes" :key="index" :id="quote.id" :bidPair="quote.bidPair" :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
         </div>
       </div>
@@ -94,8 +94,7 @@ export default {
 }
 
 .bid-grid {
-  width: 800px;
-  height: 600px;
+  width: 100%;
   border: 1px solid gray;
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -104,6 +103,8 @@ export default {
     "title header"
     "items quotes"
     "placeholder totals";
+    // row count needs to be decided by item count...
+    // column count needs to be decided by vendor count
 
   &__title {
     grid-area: title;
@@ -112,6 +113,9 @@ export default {
 
   &__header {
     grid-area: header;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     background-color: yellow;
   }
 
@@ -136,17 +140,10 @@ export default {
   }
 }
 
-.quote-grid {
+#quoteGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
-  // Want to set quote grid with 
-  // max columns = number of vendors
-  // max rows = number of items
 
-  &__item {
-
-  }
 }
 </style>
