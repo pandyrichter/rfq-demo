@@ -3,14 +3,13 @@
     price
     <input type="text" v-model="quote.price" @keyup.enter="addQuote(quote)">
     <div>Quoteid: {{ quote.id }}</div>
-    <div>Item: {{ quote.bidPair[0] }}</div>
-    <div>Vendor: {{ quote.bidPair[1] }}</div>
-    <div>Qty: {{ quote.qty }}</div>
     <div>Pair: {{ quote.bidPair }}</div>
-    <button @click="addQuote(quote)">Submit quote</button>
     <div>Extended price: ${{ quote.price * quote.qty }}</div>
-    <div v-if="quote.locked"><span class="fa fa-lock"></span></div>
-    <div v-else><span class="fa fa-unlock-alt"></span></div>
+    <div class="quote-block__functions">
+      <button @click="addQuote(quote)">Submit quote</button>
+      <div v-if="quote.locked"><span class="fa fa-lock"></span></div>
+      <div v-else><span class="fa fa-unlock-alt"></span></div>
+    </div>
   </div>
 </template>
 
@@ -57,6 +56,11 @@ export default {
     border: 1px solid gray;
     border-radius: 5px;
     padding: 15px;
+
+    &__functions {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .quoteblockactive {

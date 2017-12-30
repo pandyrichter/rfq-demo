@@ -21,8 +21,7 @@ export default {
       // Step 3: Create combination for each set of vendors and items
       let bidCombinations = cartesian(items, vendors)
       let timestamp = Date.now()
-      console.log(typeof bidCombinations)
-      for (let i = 0; i <= bidCombinations.length; i++) {
+      for (let i = 0; i < bidCombinations.length; i++) {
         let uniqueQuoteId = uuidv4()
         let bidPair = bidCombinations[i]
         let quoteInit = {
@@ -32,8 +31,21 @@ export default {
         }
         Vue.set(state.quotes, uniqueQuoteId, quoteInit)
       }
-      // TODO: Move out of mutation
-      document.getElementById('quoteGrid').style.gridTemplateColumns = `repeat(${vendors.length}, 225px)`
+      // TODO: Move all of this out of mutation
+      let bidGridColWidth = '200px'
+      // FIXME: select bid-grid__header children and quoteGrid columns > change width
+      // FIXME: select quote-grid__items children and quoteGrid rows > change height
+      let bidGridHeaderEl = document.getElementById('bidGridHeader')
+      let headerChildEls = bidGridHeaderEl.children
+      // convert htmldocument collection to array
+      let headerChildElsArr = [].slice.call(headerChildEls)
+
+      headerChildElsArr.forEach(child => {
+        child.style.width = bidGridColWidth
+      })
+
+      document.getElementById('quoteGrid').style.gridTemplateColumns = `repeat(${vendors.length}, ${bidGridColWidth})`
+      document.getElementById('quoteGrid').style.gridTemplateRows = `repeat(${items.length}, 1fr)`
       // Key questions (don't occur in mutation):
       // 1. How to tie each quote to a vendor and an item
       // (do i have to use a big recursive function from Stack Overflow?)

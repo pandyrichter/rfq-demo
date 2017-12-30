@@ -1,8 +1,9 @@
 <template>
   <div class="vendor-block">
     <h3>{{ vendor }}</h3>
-    <div>Terms</div>
     <div>Status</div>
+    <div>Terms</div>
+    <div>Discount</div>
   </div>
 </template>
 
@@ -16,8 +17,9 @@ export default {
 
 <style lang="postcss" scoped>
 .vendor-block {
-  // display: inline-block;
+  /* display: inline-block; */
   margin-right: 10px;
+  /* default width */
   width: 225px;
   text-align: center;
   border: 1px solid gray;

@@ -18,23 +18,23 @@
     <div v-if="!currentBidGroupID" class="analysis-placeholder">Select a bid group to complete analysis.</div>
     <bid-analysis class="bid-grid">
       <div class="bid-grid__title">{{ currentBidGroup.name }}</div>
-      <div class="bid-grid__header">
+      <div class="bid-grid__header" id="bidGridHeader">
         <vendor-block v-for="(vendor, index) in currentBidVendors"
         :key="`vendor-${index}`"
         :vendor="vendor">
         </vendor-block>
       </div>
-      <div class="bid-grid__items">
-        <item-block
-        v-for="(item, index) in currentBidItems"
-        :key="`item-${index}`"
-        :item="item">
-        </item-block>
-      </div>
       <div class="bid-grid__quotes">
-        <div id="quoteGrid">
-          <quote-block class="quote-grid__item" v-for="(quote, index) in currentBidQuotes" :key="index" :id="quote.id" :bidPair="quote.bidPair" :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
-        </div>
+          <div class="quote-grid__items">
+            <item-block
+            v-for="(item, index) in currentBidItems"
+            :key="`item-${index}`"
+            :item="item">
+            </item-block>
+          </div>
+          <div class="quote-grid__quotes" id="quoteGrid">
+            <quote-block v-for="(quote, index) in currentBidQuotes" :key="index" :id="quote.id" :bidPair="quote.bidPair" :vendor="'Timball'" :item="'Nighstand'" :qty="3"></quote-block>
+          </div>
       </div>
       <div class="bid-grid__placeholder"></div>
       <div class="bid-grid__totals">Totals</div>
@@ -101,7 +101,7 @@ export default {
   grid-template-rows: 1fr 5fr 1fr;
   grid-template-areas:
     "title header"
-    "items quotes"
+    "quotes quotes"
     "placeholder totals";
     // row count needs to be decided by item count...
     // column count needs to be decided by vendor count
@@ -119,14 +119,13 @@ export default {
     background-color: yellow;
   }
 
-  &__items {
-    grid-area: items;
-    background-color: aquamarine;
-  }
-
   &__quotes {
-    grid-area: quotes;
     background-color: lightblue;
+    display: grid;
+    grid-area: quotes;
+    grid-template-areas: "items quotes";
+    grid-template-columns: 200px auto;
+    /* see quote-grid below */
   }
 
   &__totals {
@@ -140,10 +139,18 @@ export default {
   }
 }
 
+.quote-grid__items {
+  grid-area: items;
+}
+
+.quote-grid__quotes {
+  grid-area: quotes;
+}
+
 #quoteGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
 
 }
+
 </style>
